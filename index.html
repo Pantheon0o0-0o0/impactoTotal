@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Combat Zone</title>
+    <link rel="stylesheet" href="rr.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="index.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff3366',
+                        secondary: '#ff0000',
+                        lightGray: '#e5e5e5',
+                        darkGray: '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-50 backdrop-blur-lg shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-12 h-12">
+                        <div class="absolute inset-0 bg-red-500 rounded-full animate-pulse-slow"></div>
+                        <img src="img/logo2-min.webp" alt="Logo" class="relative w-12 h-12 rounded-full border-2 border-white" />
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
+                        Elite Combat Zone
+                    </span>
+                </div>
+                <!-- Desktop Navbar -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#Inicio" class="text-gray-300 hover:text-white transition-colors duration-300">Inicio</a>
+                    <a href="#Eventos" class="text-gray-300 hover:text-white transition-colors duration-300">Eventos</a>
+                    <a href="#Rankings" class="text-gray-300 hover:text-white transition-colors duration-300">Rankings</a>
+                    <a href="#Noticias" class="text-gray-300 hover:text-white transition-colors duration-300">Noticias</a>
+                    <a href="#Podcast" class="text-gray-300 hover:text-white transition-colors duration-300">Podcast</a>
+
+
+                    <button class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full font-semibold hover:from-red-500 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
+                        <a href="#Ropa" class="text-gray-300 hover:text-white transition-colors duration-300">Tienda de Ropa</a>
+                    </button>
+                </div>
+                <!-- Mobile Navbar Toggle -->
+                <div class="md:hidden flex items-center">
+                    <button id="navbar-toggler" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="Inicio" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 space-y-8 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                    <span class="block">IMPACTO ENTRE GUANTES Y</span>
+                    <span class="bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent animate-text-glow"> OCTAGONOS </span>
+                </h1>
+                    <p class="text-xl text-gray-300">
+                        Transmisiones en vivo en calidad 4K de los mejores eventos de UFC y Boxeo profesional.
+                    </p>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#eventos" class="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-full font-semibold hover:from-red-500 hover:to-red-600 transition-all duration-300 transform hover:scale-105 animate-pulse hover:animate-none text-center block">
+                            Ver Eventos
+                        </a>
+
+                        <a href="#suscribirse" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 transform hover:translate-y-1 text-center block">
+                            Suscribirse
+                        </a>
+
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full filter blur-3xl opacity-30 animate-glow"></div>
+                        <img src="img/logo2-min.webp" alt="Hero" class="relative rounded-3xl shadow-2xl floating transform hover:scale-105 transition-all duration-300" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-menu" class="text-white text-3xl">×</button>
+        </div>
+        <div class="flex flex-col items-center space-y-8 py-8">
+            <a href="#Inicio" class="text-white text-xl">Inicio</a>
+            <a href="#Eventos" class="text-white text-xl">Eventos</a>
+            <a href="#Rankings" class="text-white text-xl">Rankings</a>
+            <a href="#Noticias" class="text-white text-xl">Noticias</a>
+            <a href="#Podcast" class="text-white text-xl">Podcast</a>
+
+            <a href="Ropa" class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full font-semibold text-xl block text-center">
+                Tienda de Ropa
+            </a>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        // Mobile menu toggle
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+    
+        navbarToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+    
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    </script>
+
+
+
+    <!-- Eventos Destacados -->
+    <section id="Eventos" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                Próximos <span class="text-red-500">Eventos</span>
+            </h2>
+            <div id="eventos" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Los eventos serán inyectados aquí -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="py-20 bg-gradient-to-b from-black to-red-900">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-red-500 mb-2">150+</div>
+                    <div class="text-gray-300">Eventos al Año</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-red-500 mb-2">4K</div>
+                    <div class="text-gray-300">Calidad de Video</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-red-500 mb-2">1M+</div>
+                    <div class="text-gray-300">Suscriptores</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-red-500 mb-2">24/7</div>
+                    <div class="text-gray-300">Soporte</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Pesaje -->
+    <section class="relative py-20 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <!-- Título -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold text-center mb-4 title-animate" id="weigh-in-title">
+                    <span class="typing-effect">Pesaje Oficial</span>
+                </h2>
+                <p class="text-lightGray max-w-2xl mx-auto opacity-0 transform translate-y-8 fade-up" id="weigh-in-subtitle">
+                    Descubre el pesaje en vivo de los mejores peleadores de <span class="text-primary font-bold">Boxeo</span> y <span class="text-secondary font-bold">MMA</span>. Una previa épica antes de la gran noche.
+                </p>
+            </div>
+
+            <!-- Tarjetas de Peleadores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Peleador 1 -->
+                <div class="glass-card p-6 rounded-3xl group parallax glow-on-scroll">
+                    <div class="relative">
+                        <img src="https://impacto-de-guantes.netlify.app/img/ii-min-min.webp" alt="Juan Ramírez" class="w-full h-64 object-cover rounded-xl fighter-img" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                            Peso: 76.8 kg
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 group-hover:text-primary transition duration-300">
+                        Juan "El Tormenta" Ramírez
+                    </h3>
+                    <p class="text-lightGray">Campeón Peso Welter</p>
+                </div>
+
+                <!-- Peleador 2 -->
+                <div class="glass-card p-6 rounded-3xl group parallax glow-on-scroll">
+                    <div class="relative">
+                        <img src="https://impacto-de-guantes.netlify.app/img/PFL_11zon.webp" alt="Carlos Domínguez" class="w-full h-64 object-cover rounded-xl fighter-img" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                            Peso: 83.4 kg
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 group-hover:text-primary transition duration-300">
+                        Carlos "La Bestia" Domínguez
+                    </h3>
+                    <p class="text-lightGray">Invicto Peso Medio</p>
+                </div>
+
+                <!-- Peleador 3 -->
+                <div class="glass-card p-6 rounded-3xl group parallax glow-on-scroll">
+                    <div class="relative">
+                        <img src="https://impacto-de-guantes.netlify.app/img/boxeo-min-min.webp" alt="Ana Sánchez" class="w-full h-64 object-cover rounded-xl fighter-img" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                            Peso: 61.2 kg
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 group-hover:text-primary transition duration-300">
+                        Ana "Furia" Sánchez
+                    </h3>
+                    <p class="text-lightGray">Campeona Peso Pluma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Inicialización de GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación de Título y Subtítulo
+        gsap.to("#weigh-in-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: { trigger: "#weigh-in-title", start: "top 80%" }
+        });
+
+        gsap.to("#weigh-in-subtitle", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            delay: 0.3,
+            ease: "power4.out",
+            scrollTrigger: { trigger: "#weigh-in-title", start: "top 80%" }
+        });
+
+        // Animación de Tarjetas de Peleadores
+        gsap.utils.toArray(".glass-card").forEach((card, i) => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                delay: i * 0.2,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // Efecto 3D del Mouse en las Tarjetas
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left;
+                const offsetY = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (offsetY - centerY) / 10;
+                const rotateY = (offsetX - centerX) / 10;
+
+                card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+        });
+    </script>
+
+    <section id="Rankings" class="py-20 bg-gradient-to-b from-black via-gray-900 to-black">
+        <div class="container mx-auto px-8">
+            <!-- Encabezado -->
+            <h2 class="text-5xl font-extrabold text-center text-white mb-16">
+            Rankings <span class="text-red-500">Elite</span> de <span class="text-blue-500">MMA</span> y <span class="text-green-500">Boxeo</span>
+        </h2>
+
+            <!-- Grilla de rankings -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Columna de MMA -->
+                <div class="bg-gray-800 rounded-3xl shadow-xl p-8 relative">
+                    <!-- Título de MMA -->
+                    <div class="absolute top-0 left-6 -translate-y-1/2 bg-red-500 text-white px-6 py-2 rounded-full text-lg font-bold shadow-md">
+                        MMA Rankings
+                    </div>
+                    <div class="space-y-8 mt-8">
+                        <!-- Item de peleador -->
+                        <div class="flex items-center border-b border-gray-700 pb-6">
+                            <img src="img/Jon-Jones-min-min.webp" alt="Jon Jones" class="w-20 h-20 rounded-full border-4 border-red-500 shadow-lg">
+                            <div class="ml-6">
+                                <h3 class="text-xl font-bold text-white">Jon Jones</h3>
+                                <p class="text-sm text-gray-400">Peso Completo • Récord: 27-1-0</p>
+                                <span class="text-green-400 font-semibold text-xs">Campeón Mundial</span>
+                                <span class="text-yellow-400 font-semibold text-xs">Campeón Indiscutido</span>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span class="text-2xl font-bold text-gray-200">#1</span>
+                            </div>
+                        </div>
+
+                        <!-- Repite para otros peleadores -->
+                        <div class="flex items-center border-b border-gray-700 pb-6">
+                            <img src="img/MAKHACHEV-min-min.webp" alt="Islam Makhachev" class="w-20 h-20 rounded-full border-4 border-red-500 shadow-lg">
+                            <div class="ml-6">
+                                <h3 class="text-xl font-bold text-white">Islam Makhachev</h3>
+                                <p class="text-sm text-gray-400">Peso Ligero • 26-1-0 (W-L-D)</p>
+                                <span class="text-green-400 font-semibold text-xs">Campeón Mundial</span>
+                                <span class="text-yellow-400 font-semibold text-xs">Campeón Indiscutido</span>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span class="text-2xl font-bold text-gray-200">#2</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center border-b border-gray-700 pb-6">
+                            <img src="img/PEREIRA-min-min.webp" alt="Islam Makhachev" class="w-20 h-20 rounded-full border-4 border-red-500 shadow-lg">
+                            <div class="ml-6">
+                                <h3 class="text-xl font-bold text-white">Alex Poreira</h3>
+                                <p class="text-sm text-gray-400">Peso semipesado | 12-2-0 (W-L-D)</p>
+                                <span class="text-green-400 font-semibold text-xs">Campeón Mundial</span>
+                                <span class="text-yellow-400 font-semibold text-xs">Campeón Indiscutido</span>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span class="text-2xl font-bold text-gray-200">#2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Boxeo -->
+                <div class="bg-gray-800 rounded-3xl shadow-xl p-8 relative">
+                    <!-- Título de Boxeo -->
+                    <div class="absolute top-0 left-6 -translate-y-1/2 bg-blue-500 text-white px-6 py-2 rounded-full text-lg font-bold shadow-md">
+                        Boxeo Rankings
+                    </div>
+                    <div class="space-y-8 mt-8">
+                        <!-- Item de boxeador -->
+                        <div class="flex items-center border-b border-gray-700 pb-6">
+                            <img src="img/Canelo-alvarez-min-min.webp" alt="Canelo Álvarez" class="w-20 h-20 rounded-full border-4 border-blue-500 shadow-lg">
+                            <div class="ml-6">
+                                <h3 class="text-xl font-bold text-white">Canelo Álvarez</h3>
+                                <p class="text-sm text-gray-400">Peso Supermedio • Récord: 59-2-2</p>
+                                <span class="text-green-400 font-semibold text-xs">Campeón Mundial</span>
+                                <span class="text-yellow-400 font-semibold text-xs">Campeón Indiscutido</span>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span class="text-2xl font-bold text-gray-200">#1</span>
+                            </div>
+                        </div>
+
+                        <!-- Repite para otros boxeadores -->
+                        <div class="flex items-center border-b border-gray-700 pb-6">
+                            <img src="img/Oleksandr-Uzyk1-min-min.webp" alt="Oleksandr Usyk" class="w-20 h-20 rounded-full border-4 border-blue-500 shadow-lg">
+                            <div class="ml-6">
+                                <h3 class="text-xl font-bold text-white">Oleksandr Usyk</h3>
+                                <p class="text-sm text-gray-400">Peso Pesado| récord 22-0-0 W-L-D</p>
+                                <span class="text-green-400 font-semibold text-xs">Campeón Mundial</span>
+                                <span class="text-yellow-400 font-semibold text-xs">Campeón Indiscutido</span>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span class="text-2xl font-bold text-gray-200">#2</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center border-b border-gray-700 pb-6">
+                            <img src="img/Artur Beterbiev0-min-min.webp" alt="Oleksandr Usyk" class="w-20 h-20 rounded-full border-4 border-blue-500 shadow-lg">
+                            <div class="ml-6">
+                                <h3 class="text-xl font-bold text-white">Artur Beterbiev</h3>
+                                <p class="text-sm text-gray-400">Semipesado| 21-0, 20 KOs</p>
+                                <span class="text-green-400 font-semibold text-xs">Campeón Mundial</span>
+                                <span class="text-yellow-400 font-semibold text-xs">Campeón Indiscutido</span>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <span class="text-2xl font-bold text-gray-200">#2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias Destacadas -->
+    <section id="Noticias" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+            Noticias <span class="text-red-500">Destacadas</span>
+        </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Noticia 1 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="relative">
+                        <img src="img/Petr Yan vs. Deiveson Figueiredo-min.webp" alt="Noticia 1" class="rounded-xl mb-4 w-full" />
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm">
+                            ACTUALIDAD
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Nuevos Retadores en el Ranking Mundial</h3>
+                    <p class="text-gray-400 mb-4">
+                        Descubre quiénes son los peleadores que están dominando las categorías este mes.
+                    </p>
+                    <a href="https://www.aficioncentral.com/noticias/mas-deportes/petr-yan-vs-deiveson-figueiredo-fecha-cartelera-horarios-canales-y-plataformas-de-streaming-para-ver-en-vivo-el-ufc-macau/40055/" class="text-red-500 font-semibold hover:underline">Leer más</a>
+                </div>
+
+                <!-- Noticia 2 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="relative">
+                        <img src="img/TENDENCIALUCHADORES-min-min_1_11zon.webp" alt="Noticia 2" class="rounded-xl mb-4 w-full" />
+                        <div class="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm">
+                            TENDENCIA
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Las Peleas Más Icónicas del Año</h3>
+                    <p class="text-gray-400 mb-4">
+                        Un repaso a los momentos más memorables del octágono en 2024.
+                    </p>
+                    <a href="https://www.sportingnews.com/ar/mma/news/quienes-son-campeones-ufc-lista-monarcas-artes-marciales-mixtas/tmfyooedacrypynsi5aeqneb" class="text-red-500 font-semibold hover:underline">Leer más</a>
+                </div>
+
+                <!-- Noticia 3 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="relative">
+                        <img src="img/UFC 309-min-min_2_11zon.webp" alt="Noticia 3" class="rounded-xl mb-4 w-full" />
+                        <div class="absolute top-4 right-4 bg-gray-500 text-white px-3 py-1 rounded-full text-sm">
+                            ENTREVISTA
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Entrevista Exclusiva con Jane Smith</h3>
+                    <p class="text-gray-400 mb-4">
+                        La campeona de peso ligero comparte su estrategia para el próximo combate.
+                    </p>
+                    <a href="https://www.sportingnews.com/us-es/ufc/news/jones-miocic-309-resultados-vivo-directo-videos/5a8c06036f1770e85182f40f" class="text-red-500 font-semibold hover:underline">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Podcast" class="relative bg-gradient-to-br from-gray-800 to-gray-900 py-16 sm:py-20 overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Fondo animado -->
+            <div class="absolute inset-0">
+                <div class="animate-pulse-slow opacity-30">
+                    <svg viewBox="0 0 800 800" class="absolute w-full h-full text-yellow-500 -left-1/2">
+                        <circle cx="400" cy="400" r="300" fill="currentColor"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Encabezado -->
+            <div class="relative z-10 text-center">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6">
+                Escucha nuestro <span class="text-yellow-500">Podcast</span>
+            </h2>
+                <p class="text-base sm:text-lg text-gray-400 mb-8 sm:mb-12">
+                    Donde la pasión por MMA y Boxeo se convierte en conversaciones inolvidables.
+                </p>
+            </div>
+
+            <!-- Perfiles de anfitriones -->
+            <div class="relative z-10 grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2">
+                <!-- Tarjeta de anfitrión -->
+                <div class="group bg-gray-800 rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col items-center transform transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+                    <img src="https://via.placeholder.com/120" alt="Carlos" class="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 rounded-full border-4 border-yellow-500 shadow-lg group-hover:rotate-12 transition-transform">
+                    <h3 class="mt-4 sm:mt-6 text-xl sm:text-2xl font-bold text-white">Carlos "El Analista"</h3>
+                    <p class="mt-2 text-sm sm:text-base text-gray-400 text-center">
+                        Experto en análisis técnico y táctico de deportes de combate.
+                    </p>
+                    <!-- Redes sociales -->
+                    <div class="flex space-x-4 mt-4 sm:mt-6">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de anfitrión -->
+                <div class="group bg-gray-800 rounded-3xl shadow-xl p-6 sm:p-8 flex flex-col items-center transform transition-all duration-500 hover:scale-105 hover:shadow-2xl">
+                    <img src="https://via.placeholder.com/120" alt="Laura" class="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 rounded-full border-4 border-yellow-500 shadow-lg group-hover:rotate-12 transition-transform">
+                    <h3 class="mt-4 sm:mt-6 text-xl sm:text-2xl font-bold text-white">Laura "La Voz del Ring"</h3>
+                    <p class="mt-2 text-sm sm:text-base text-gray-400 text-center">
+                        Comentarista profesional con pasión por el boxeo.
+                    </p>
+                    <!-- Redes sociales -->
+                    <div class="flex space-x-4 mt-4 sm:mt-6">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-spotify"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-lg sm:text-xl transition-transform transform hover:scale-125">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones para escuchar -->
+            <div class="relative z-10 mt-12 sm:mt-16 text-center">
+                <p class="text-base sm:text-lg text-gray-400 mb-4 sm:mb-6">Disponible en:</p>
+                <div class="flex flex-wrap justify-center space-x-4 sm:space-x-6">
+                    <a href="#" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-lg flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
+                        <i class="fab fa-spotify text-lg sm:text-xl"></i>
+                        <span>Spotify</span>
+                    </a>
+                    <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-lg flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
+                        <i class="fab fa-apple text-lg sm:text-xl"></i>
+                        <span>Apple Podcasts</span>
+                    </a>
+                    <a href="#" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-lg flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
+                        <i class="fab fa-youtube text-lg sm:text-xl"></i>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="#" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-lg flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
+                        <i class="fab fa-tiktok text-lg sm:text-xl"></i>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Newsletter -->
+    <section class="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-black">
+        <div class="container mx-auto px-6">
+            <div class="glass-effect rounded-3xl p-12 text-center max-w-3xl mx-auto opacity-0 animate-fadeInUp">
+                <h2 class="text-4xl font-extrabold text-white mb-6 opacity-0 animate-fadeInUp animate-delay-1">
+                Únete a la Comunidad
+            </h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto text-lg opacity-0 animate-fadeInUp animate-delay-2">
+                    Recibe notificaciones de eventos exclusivos y contenido premium directamente en tu correo.
+                </p>
+                <form class="max-w-lg mx-auto flex flex-wrap gap-4 justify-center opacity-0 animate-fadeInUp animate-delay-3">
+                    <input type="email" placeholder="Tu email" class="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-300"
+                    />
+                    <button class="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-full font-semibold hover:from-red-500 hover:to-red-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 animate-hover">
+                        Suscribirse
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Peleadores Profesionales -->
+    <section class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+            Peleadores <span class="text-red-500">Destacados UFC</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta de Peleador -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="img/Jon-Jones-min-min.webp" alt="Fighter" class="mx-auto rounded-full w-32 h-32 mb-4 border-4 border-red-500" />
+                    <h3 class="text-xl font-bold mb-2">Jon Jones</h3>
+                    <p class="text-gray-400 text-sm mb-4">Peso pesado| Récord: 28 - 1 - 0 , 1SR</p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+
+                    <a href="https://www.ufcespanol.com/athlete/jon-jones" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-500 transition-all">
+                        Ver Perfil
+                    </a>
+
+                </div>
+
+                <!-- Tarjeta de Peleador -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="img/MAKHACHEV-min-min.webp" alt="Fighter" class="mx-auto rounded-full w-32 h-32 mb-4 border-4 border-red-500" />
+                    <h3 class="text-xl font-bold mb-2">Islam Makhachev</h3>
+                    <p class="text-gray-400 text-sm mb-4">Peso Ligero | 26-1-0 (W-L-D)</p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <a href="https://www.ufcespanol.com/athlete/islam-makhachev" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-500 transition-all">
+                        Ver Perfil
+                    </a>
+                </div>
+
+                <!-- Tarjeta de Peleador -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="img/PEREIRA-min-min.webp" alt="Fighter" class="mx-auto rounded-full w-32 h-32 mb-4 border-4 border-red-500" />
+                    <h3 class="text-xl font-bold mb-2">Alex Pereira</h3>
+                    <p class="text-gray-400 text-sm mb-4">Peso semipesado | 12-2-0 (W-L-D)</p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <a href="https://www.ufcespanol.com/athlete/alex-pereira" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-500 transition-all">
+                        Ver Perfil
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center my-10 mb-16">
+            Peleadores <span class="text-red-500">Destacados BOXEO</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta de Peleador -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="img/Canelo-alvarez-min-min.webp" alt="Fighter" class="mx-auto rounded-full w-32 h-32 mb-4 border-4 border-red-500" />
+                    <h3 class="text-xl font-bold mb-2">Saúl Álvarez</h3>
+                    <p class="text-gray-400 text-sm mb-4">Peso mediano| 62-2-2</p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+
+                    <a href="https://boxrec.com/en/proboxer/348759" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-500 transition-all">
+                        Ver Perfil
+                    </a>
+
+                </div>
+
+                <!-- Tarjeta de Peleador -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="img/Artur Beterbiev0-min-min.webp" alt="Fighter" class="mx-auto rounded-full w-32 h-32 mb-4 border-4 border-red-500" />
+                    <h3 class="text-xl font-bold mb-2">Artur Beterbiev</h3>
+                    <p class="text-gray-400 text-sm mb-4">Semipesado| 21-0, 20 KOs</p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <a href="https://boxrec.com/en/box-pro/646981" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-500 transition-all">
+                        Ver Perfil
+                    </a>
+                </div>
+
+                <!-- Tarjeta de Peleador -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="img/Oleksandr-Uzyk1-min-min.webp" alt="Fighter" class="mx-auto rounded-full w-32 h-32 mb-4 border-4 border-red-500" />
+                    <h3 class="text-xl font-bold mb-2">Oleksandr Usyk</h3>
+                    <p class="text-gray-400 text-sm mb-4">Peso Pesado| récord 22-0-0 W-L-D</p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                    <a href="https://boxrec.com/en/box-pro/659772" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-500 transition-all">
+                        Ver Perfil
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Tienda de Ropa -->
+    <section id="Ropa" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">
+            Tienda de <span class="text-red-500">Ropa Oficial</span>
+        </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Producto 1 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="/api/placeholder/200/200" alt="Camiseta" class="mx-auto rounded-xl w-48 h-48 mb-4" />
+                    <h3 class="text-xl font-bold mb-2">Camiseta Elite Combat</h3>
+                    <p class="text-gray-400 text-sm mb-4">Material premium - Disponible en varios tamaños</p>
+                    <span class="block text-xl text-red-500 font-bold mb-4">$29.99</span>
+                    <button class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full font-semibold hover:from-red-500 hover:to-red-600 transition-all mb-4">
+                        Comprar
+                    </button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="/api/placeholder/200/200" alt="Pantalón" class="mx-auto rounded-xl w-48 h-48 mb-4" />
+                    <h3 class="text-xl font-bold mb-2">Pantalón de Entrenamiento</h3>
+                    <p class="text-gray-400 text-sm mb-4">Ajuste perfecto y durabilidad superior</p>
+                    <span class="block text-xl text-red-500 font-bold mb-4">$39.99</span>
+                    <button class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full font-semibold hover:from-red-500 hover:to-red-600 transition-all mb-4">
+                        Comprar
+                    </button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover text-center">
+                    <img src="/api/placeholder/200/200" alt="Conjunto" class="mx-auto rounded-xl w-48 h-48 mb-4" />
+                    <h3 class="text-xl font-bold mb-2">Conjunto Oficial</h3>
+                    <p class="text-gray-400 text-sm mb-4">Camiseta + Pantalón - Paquete especial</p>
+                    <span class="block text-xl text-red-500 font-bold mb-4">$59.99</span>
+                    <button class="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-full font-semibold hover:from-red-500 hover:to-red-600 transition-all mb-4">
+                        Comprar
+                    </button>
+                </div>
+            </div>
+            <div class="text-center mt-16">
+                <a href="https://wa.me/1234567890?text=Hola,%20estoy%20interesado%20en%20comprar%20ropa%20Elite%20Combat!" class="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-all text-lg inline-flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.52 3.48A11.944 11.944 0 0012 0C5.37 0 0 5.37 0 12c0 2.12.56 4.18 1.64 6.02l-1.52 5.56a1 1 0 001.28 1.28l5.56-1.52C7.82 23.44 9.88 24 12 24c6.63 0 12-5.37 12-12 0-3.18-1.23-6.16-3.48-8.52zm-7.47 17.31c-1.8 0-3.55-.46-5.09-1.34a.996.996 0 00-.79-.07l-3.68.99 1-3.68a.995.995 0 00-.07-.79 10.06 10.06 0 01-1.34-5.09C2.1 6.48 6.48 2.1 12 2.1c5.52 0 9.9 4.38 9.9 9.9 0 5.52-4.38 9.9-9.9 9.9zm5.34-7.15c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.66.15-.19.3-.76.97-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.67-2.1-.17-.3-.02-.47.13-.62.14-.15.3-.34.45-.51.15-.17.2-.29.3-.48.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.91-2.18-.24-.59-.48-.5-.66-.5-.17 0-.36-.02-.55-.02s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.16 5.08 4.44.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.31.18-1.42-.08-.12-.29-.2-.59-.35z"></path>
+                    </svg>
+                    Consultar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="relative bg-gradient-to-br from-gray-900 to-gray-800 py-20 overflow-hidden">
+        <!-- Fondo animado -->
+        <div class="absolute inset-0">
+            <div class="animate-bounce-slow opacity-20">
+                <svg viewBox="0 0 800 800" class="absolute w-full h-full text-pink-500 -right-1/3 top-0">
+                    <circle cx="400" cy="400" r="300" fill="currentColor"></circle>
+                </svg>
+                <svg viewBox="0 0 800 800" class="absolute w-full h-full text-blue-500 -left-1/4 -bottom-1/3">
+                    <circle cx="400" cy="400" r="250" fill="currentColor"></circle>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Encabezado -->
+        <div class="relative z-10 text-center">
+            <h2 class="text-5xl font-extrabold text-white mb-6">
+            Videos Destacados de <span class="text-pink-500">YouTube</span>
+        </h2>
+            <p class="text-lg text-gray-400 mb-12">
+                Descubre los mejores videos y momentos destacados.
+            </p>
+        </div>
+
+        <!-- Galería de videos -->
+        <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+
+            <!-- Tarjeta de video -->
+            <a href="https://www.youtube.com/watch?v=kXP85_O0SBk" target="_blank" class="group relative bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ytimg.com/an_webp/kXP85_O0SBk/mqdefault_6s.webp?du=3000&sqp=CMaT9bkG&rs=AOn4CLBdw36uCM5jDyatNKpKrgRJekadyA" alt="Vista previa del video" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-white">Video Destacado</h3>
+                        <p class="text-sm text-gray-400">Momentos virales capturados en alta calidad.</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Repite esta estructura para más videos -->
+            <a href="https://www.youtube.com/watch?v=aCWe0HBNrsw" target="_blank" class="group relative bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ytimg.com/an_webp/aCWe0HBNrsw/mqdefault_6s.webp?du=3000&sqp=CNyU9bkG&rs=AOn4CLBCChvyyI27gI68ONrg1iMZcdwjWQ" alt="Vista previa del video" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-white">Otro Video</h3>
+                        <p class="text-sm text-gray-400">Descubre más contenido interesante.</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=a77LW-4y3UY" target="_blank" class="group relative bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-2xl">
+                <img src="https://i.ytimg.com/an_webp/a77LW-4y3UY/mqdefault_6s.webp?du=3000&sqp=CKKK9bkG&rs=AOn4CLBDBXXr6m8m_J5MExhEXdA2cHU1JA" alt="Vista previa del video" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-white">Otro Video</h3>
+                        <p class="text-sm text-gray-400">Descubre más contenido interesante.</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Botón para explorar más -->
+        <div class="relative z-10 mt-16 text-center">
+            <a href="https://www.youtube.com/@ufc/videos" target="_blank" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg inline-flex items-center space-x-2 transform transition-transform hover:scale-105">
+                <i class="fab fa-youtube text-xl"></i>
+                <span>Explorar más en YouTube</span>
+            </a>
+        </div>
+    </section>
+
+
+
+
+
+    <footer class="relative bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Fondo animado -->
+            <div class="absolute inset-0 overflow-hidden z-0">
+                <div class="opacity-20 animate-pulse-slow">
+                    <svg viewBox="0 0 800 800" class="absolute -top-10 left-1/3 w-[400px] text-yellow-500">
+                        <circle cx="400" cy="400" r="350" fill="currentColor"></circle>
+                    </svg>
+                    <svg viewBox="0 0 800 800" class="absolute -bottom-20 right-1/3 w-[300px] text-blue-500">
+                        <circle cx="400" cy="400" r="250" fill="currentColor"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Contenido del Footer -->
+            <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Acerca de -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Acerca de nosotros</h3>
+                    <p class="text-sm">
+                        Somos apasionados por el MMA y el boxeo, creando contenido único para los fanáticos de los deportes de combate.
+                    </p>
+                </div>
+
+                <!-- Enlaces rápidos -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Enlaces rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-500 transition">Inicio</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Episodios</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Anfitriones</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Recursos -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Recursos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-500 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Ayuda</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Términos de uso</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition">Política de privacidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Redes sociales -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">Síguenos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition-transform transform hover:scale-110">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition-transform transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition-transform transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 text-2xl transition-transform transform hover:scale-110">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Línea divisoria -->
+            <div class="relative z-10 mt-12 border-t border-gray-700 pt-6 text-center">
+                <p class="text-sm">
+                    &copy; 2024 Podcast MMA & Boxeo. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>

@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+:root {
+    --primary: #FF3E3E;
+    --secondary: #1E1E1E;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #000000;
+    color: #ffffff;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at center, var(--secondary) 0%, #000000 100%);
+}
+
+.card-hover {
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.6s ease;
+}
+
+.card-hover:hover {
+    transform: perspective(1000px) rotateY(10deg) translateY(-5px);
+}
+
+.animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Styles for Advanced Design */
+/* Animations */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+.animate-glow {
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes text-glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 0, 0, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 0, 0, 0.8);
+    }
+}
+.animate-text-glow {
+    animation: text-glow 2s infinite alternate;
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+    display: none;
+}
+#mobile-menu.active {
+    display: block;
+}
+
+/* Adjustments for Small Screens */
+@media (max-width: 400px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .hero-gradient {
+        padding-top: 123px;
+    }
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+    .hero-gradient h1 {
+        font-size: 1.75rem;
+    }
+    .text-xl {
+        font-size: 1.2rem;
+    }
+    #mobile-menu a {
+        font-size: 1.25rem;
+    }
+    #mobile-menu button {
+        padding: 12px 24px;
+    }
+}
+
+/* Agrega las clases CSS siguientes en tu archivo  */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Clases para animación */
+.animate-fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Retraso progresivo en la animación */
+.animate-delay-1 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.4s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* Efecto de hover en el botón */
+.animate-hover {
+    transition: transform 0.3s ease;
+}
+
+.animate-hover:hover {
+    transform: scale(1.05);
+}
+
+/* Efectos responsivos */
+@media (max-width: 768px) {
+    .text-4xl {
+        font-size: 2.25rem;
+    }
+    .text-lg {
+        font-size: 1.125rem;
+    }
+}
+
+/* Agrega la transición de enfoque al input y botón */
+input:focus, button:focus {
+    outline: none;
+}
+
+/**/
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #ff3366, #ff0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-hover {
+    transition: all 0.4s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 51, 102, 0.1);
+    border-radius: 50%;
+}
+
+/**/
+
+ /* Efecto Glassmorphism */
+ .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 50px rgba(255, 255, 255, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+/* Efecto Hover 3D en Tarjetas */
+.glass-card:hover {
+    transform: translateY(-15px) scale(1.05) rotateY(10deg) rotateX(10deg);
+    box-shadow: 0 20px 60px rgba(255, 254, 254, 0.7);
+    filter: brightness(1.2);
+}
+
+/* Glow interactivo en tarjetas */
+.glass-card.glow-on-hover {
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.8);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Efecto Hover 3D en Imágenes */
+.fighter-img {
+    transition: transform 0.3s ease, opacity 0.4s ease;
+}
+
+.fighter-img:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+/* Animaciones de entrada con GSAP */
+.title-animate {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Efecto de Sombra en Scroll */
+.glow-on-scroll {
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Estilo para el Efecto de Escritura */
+.typing-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid;
+    width: 0;
+    animation: typing 2s steps(30) forwards, blink 0.75s step-end infinite;
+}
+
+/* Animación de tipo de escritura */
+@keyframes typing {
+    to {
+        width: 100%;
+    }
+}
+
+/* Efecto de parpadeo del cursor */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
